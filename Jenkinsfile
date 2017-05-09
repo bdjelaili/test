@@ -3,24 +3,12 @@ node {
 
             checkout scm
 
-            docker.image('ruby:2.3.1').inside {
+            docker.image('ubuntu:16.04').inside {
 
-              stage("Install Bundler") {
-                sh "gem install bundler --no-rdoc --no-ri"
+              stage("Install JDK 8 (latest edition)") {
+                sh "apt install openjdk-8-jdk"
               }
-
-              stage("Use Bundler to install dependencies") {
-                sh "bundle install"
-              }
-
-              stage("Build package") {
-                sh "bundle exec rake build:deb"
-              }
-
-              stage("Archive package") {
-                archive (includes: 'pkg/*.deb')
-              }
-
+                    
            }
 
         }
