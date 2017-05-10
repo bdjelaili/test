@@ -1,4 +1,15 @@
-docker.image('maven').inside {
-      git 'https://github.com/fabric8io/example-camel-cdi'
-      sh 'mvn clean install'
+pipeline {
+    agent any
+    stages {
+        stage('Example') {
+            steps {
+                echo 'Hello World'
+            }
+        }
+    }
+    post { 
+        always { 
+            echo 'I will always say Hello again!'
+        }
+    }
 }
