@@ -1,15 +1,16 @@
 pipeline {
-    agent { dockerfile { dir '.' } }
+    agent any
+    environment { 
+        CC = 'clang'
+    }
     stages {
         stage('Example') {
-            steps {
-                echo 'Hello World'
+            environment { 
+                AN_ACCESS_KEY = credentials('idTest') 
             }
-        }
-    }
-    post { 
-        always { 
-            echo 'I will always say Hello again!'
+            steps {
+                sh 'printenv'
+            }
         }
     }
 }
