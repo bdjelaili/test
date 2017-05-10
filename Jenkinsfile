@@ -10,6 +10,8 @@ pipeline {
             }
             steps {
                 sh 'printenv'
+                sh 'echo ${AN_ACCESS_KEY_USR}'
+                sh 'echo ${AN_ACCESS_KEY_PSW}'
             }
         }
     }
