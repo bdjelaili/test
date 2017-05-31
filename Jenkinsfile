@@ -1,4 +1,4 @@
-docker.withServer('tcp://192.168.119.160') {
+docker.withServer('tcp://192.168.119.160','') {
   docker.image('httpd').withRun('-p 8080:80') {c ->
     sh "curl -i http://${hostIp(c)}:8080/"
   }
